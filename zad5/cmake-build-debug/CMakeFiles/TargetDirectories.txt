@@ -1,0 +1,3 @@
+D:/studia/prog_C/zad5/cmake-build-debug/CMakeFiles/zad5.dir
+D:/studia/prog_C/zad5/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/studia/prog_C/zad5/cmake-build-debug/CMakeFiles/rebuild_cache.dir
