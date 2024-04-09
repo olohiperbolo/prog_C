@@ -1,16 +1,17 @@
-#!/usr/bin/env fish
+#!/bin/bash
 
 # Find all C files recursively in subdirectories
-for file in (find . -name '*.c')
-    if test -f "$file"
-        set filename (basename "$file" .c)
-        set output_path (dirname "$file")
-        clang -o "$output_path/$filename" "$file"
-        if test $status -eq 0
+find . -name '*.c' | while read file; do
+    if [ -f "$file" ]; then
+        filename=$(basename "$file" .c)
+        output_path=$(dirname "$file")
+        clang -o "${output_path}/${filename}" "$file"
+        clang -o "${output_path}/${filename}.exe" "$file"
+        if [ $? -eq 0 ]; then
             echo "Compilation successful for $file"
         else
             echo "Error compiling $file"
-        end
-    end
-end
-
+            exit 1 # Exit the pipeline with a non-zero status code
+        fi
+    fi
+done
